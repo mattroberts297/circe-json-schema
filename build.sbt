@@ -12,9 +12,8 @@ val compilerOptions = Seq(
   "-Ywarn-numeric-widen"
 )
 
-val circeVersion = "0.12.3"
+val circeVersion = "0.11.2"
 val everitVersion = "1.12.1"
-val previousCirceJsonSchemaVersion = "0.1.0"
 
 def priorTo2_13(scalaVersion: String): Boolean =
   CrossVersion.partialVersion(scalaVersion) match {
@@ -58,7 +57,7 @@ lazy val schema = project
   .settings(allSettings)
   .settings(
     moduleName := "circe-json-schema",
-    mimaPreviousArtifacts := Set("io.circe" %% "circe-json-schema" % previousCirceJsonSchemaVersion),
+    mimaPreviousArtifacts := Set.empty,
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core" % circeVersion,
       "io.circe" %% "circe-generic" % circeVersion % Test,
